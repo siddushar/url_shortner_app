@@ -36,9 +36,9 @@ Things you may want to cover:
 This app contains supports both UI application and backend-api
  1. UI-Application - http://localhost:3000/
     1. Signup - http://localhost:3000/users/sign_up
-    1. Root page - http://localhost:3000
- 1. API only - http://localhost:3000/api_docs/index.html - has Supports 3 API's
-   1. Create user
-   2. login user and get access token
-   3. Shorten url using access token
+    2. Root page - http://localhost:3000
+ 2. API only - http://localhost:3000/api_docs/index.html - has Supports 3 API's
+   #### Create user
+   #### Login user and get access token
+   #### Shorten url using access token
 * ...
