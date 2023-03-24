@@ -1,0 +1,10 @@
+<html>
+  <body>
+    <center>
+      <h2>Your Original Url is: <%= @original_url %></h2>
+      <h2>Your shortned Url is: <%= @short_url %></h2>
+      <%= link_to nil, "#{@short_url}", remote: true %>
+      <p> If does not work, please copy paste in a new tab </p>
+    </center>
+  </body>
+</html>

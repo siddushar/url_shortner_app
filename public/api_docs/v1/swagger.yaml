@@ -1,0 +1,125 @@
+openapi: 3.0.2
+info:
+  title: ClosedStack API
+  version: 4.0.0
+
+security:
+  - APIKeyHeader: []
+
+paths:
+  /api/v1/signup:
+    post:
+      summary: This endpoint creates a new user.
+      description: |
+        - This endpoint creates a new user.
+      tags:
+        - User
+      requestBody:
+        description: The user creation parameters.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUser"
+      responses:
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: The user doesn't have permissions to access this API.
+        204:
+          description: Successfully created the user.
+  /api/v1/get_access_token:
+    post:
+      summary: This endpoint retrives the access token.
+      description: |
+        - This endpoint retrives the access token.
+      tags:
+        - User
+      requestBody:
+        description: The user login parameters.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginUser"
+      responses:
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: The user doesn't have permissions to access this API.
+        204:
+          description: Successfully retrieves the access token.
+  /api/v1/links:
+    post:
+      summary: This endpoint converts url to shortened url.
+      description: |
+        - This endpoint converts url to shortened url.
+      tags:
+        - Link
+      parameters:
+        - in: header
+          name: token
+          schema:
+            type: string
+          required: true
+          description: Access token 
+      requestBody:
+        description: The shortned url parameters.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShortenLink"
+      responses:
+        401:
+          description: Authorization information is missing or invalid.
+        403:
+          description: The user doesn't have permissions to access this API.
+        204:
+          description: Successfully shortned the url.
+
+components:
+  schemas:
+    CreateUser:
+      type: object
+      required:
+        - email
+        - password
+        - password_confirmation
+      properties:
+        email:
+          type: string
+          description: Email of the user.
+          example: ""
+        password:
+          type: string
+          description: Password for the User login.
+          example: ""
+        password_confirmation:
+          type: string
+          description: Confirm Password.
+          example: ""
+    LoginUser:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          description: Email of the user.
+          example: ""
+        password:
+          type: string
+          description: Password for the User login.
+          example: ""
+    ShortenLink:
+      type: object
+      required:
+        - original_url
+        - token
+      properties:
+        original_url:
+          type: string
+          description: Full link which needs to be shortened
+          example: "https://edgeguides.rubyonrails.org/index.html"

@@ -1,0 +1,13 @@
+<html>
+  <body>
+    <center>
+      <h3> Enter the URL </h3>
+      <%= form_for @link do |f| %>
+        <%= f.label :original_url %>:
+        <%= f.text_field :original_url %><br />
+
+        <%= f.submit %>
+        <% end %>
+    </center>
+  </body>
+</html>
